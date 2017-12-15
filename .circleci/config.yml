@@ -3,7 +3,7 @@ jobs:
   centos7: &centos
     docker:
       - image: centos
-        user: builder
+        user: root
     working_directory: /home/builder/rpmbuild
     steps:
       - checkout:
