@@ -11,4 +11,3 @@ It's Simple.
 3. Push to the branch.
 4. Create a Pull request.
 5. When the Pull request is merged, I will release ruby rpms to https://github.com/m-31/ruby-rpm/releases .
-
