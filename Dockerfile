@@ -1,9 +1,9 @@
-FROM centos:6
-MAINTAINER feedforce Inc.
+FROM centos:7
+MAINTAINER meyling
 
 # setup
 RUN yum update -y
-RUN yum install -y rpm-build tar
+RUN yum install -y rpm-build tar make
 
 # ruby depends
 RUN yum -y install readline-devel ncurses-devel gdbm-devel glibc-devel gcc openssl-devel libyaml-devel libffi-devel zlib-devel

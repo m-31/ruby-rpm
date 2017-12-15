@@ -2,7 +2,7 @@ version: 2
 jobs:
   centos7: &centos
     docker:
-      - image: feedforce/ruby-rpm:centos7
+      - image: meyling/ruby-rpm:centos7
         user: builder
     working_directory: /home/builder/rpmbuild
     steps:
@@ -33,12 +33,6 @@ jobs:
           paths:
             - ./*
 
-  centos6:
-    <<: *centos
-    docker:
-      - image: feedforce/ruby-rpm:centos6
-        user: builder
-
   deploy:
     docker:
       # Although the Golang is not necessary, the CircleCI official image is used for fast downloading.
@@ -58,11 +52,9 @@ workflows:
   build_and_deploy:
     jobs:
       - centos7
-      - centos6
       - deploy:
           requires:
             - centos7
-            - centos6
           filters:
               branches:
                 only:

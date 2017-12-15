@@ -72,16 +72,6 @@ done
 
 cat <<EOS >> description.md
 
-Build on CentOS 6
-
-EOS
-
-# CentOS 6
-for i in *.el6.x86_64.rpm *.el6.src.rpm; do
-  print_rpm_markdown $i >> description.md
-  upload_rpm $i
-done
-
 #
 # Make the release note to complete!
 #
