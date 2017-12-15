@@ -2,7 +2,7 @@ version: 2
 jobs:
   centos7: &centos
     docker:
-      - image: meyling/ruby-rpm:centos7
+      - image: centos7
         user: builder
     working_directory: /home/builder/rpmbuild
     steps:
