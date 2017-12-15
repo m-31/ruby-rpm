@@ -2,12 +2,18 @@ version: 2
 jobs:
   centos7: &centos
     docker:
-      - image: centos
+      - image: centos:7
         user: root
-    working_directory: /home/builder/rpmbuild
+    working_directory: /root/ruby-rpm
     steps:
       - checkout:
-          path: ~/ruby-rpm
+          path: /root/ruby-rpm
+      - run:
+          name: prepare yum
+          command: |
+            yum update -y
+            yum install -y rpm-build tar make
+            yum -y install readline-devel ncurses-devel gdbm-devel glibc-devel gcc openssl-devel libyaml-devel libffi-devel zlib-devel
       - run:
           name: Copy SPEC file
           command: cp ~/ruby-rpm/ruby.spec ./SPECS/
