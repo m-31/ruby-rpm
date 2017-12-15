@@ -25,6 +25,8 @@ jobs:
           command: cp ~/ruby-rpm/ruby.spec /home/builder/rpmbuild/SPECS/
       - run:
           name: Build Ruby RPM
+          working_directory: /home/builder/rpmbuild
+          shell: /usr/bin/su -c "/bin/bash -eo pipefail" builder
           command: |
             RUBY_X_Y_Z_VERSION=$(grep "%define \+rubyver" ./SPECS/ruby.spec | awk '{print $3}')
             RUBY_X_Y_VERSION=$(echo $RUBY_X_Y_Z_VERSION | sed -e 's@\.[0-9]$@@')
