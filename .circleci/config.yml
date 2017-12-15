@@ -15,8 +15,14 @@ jobs:
             yum install -y rpm-build tar make
             yum -y install readline-devel ncurses-devel gdbm-devel glibc-devel gcc openssl-devel libyaml-devel libffi-devel zlib-devel
       - run:
+          name: rpmbuild command recommends to use `builder:builder` as user:group
+          command: |
+            useradd -u 1000 builder
+            mkdir -p /home/builder/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+            chown -R builder:builder /home/builder/rpmbuild
+      - run:
           name: Copy SPEC file
-          command: cp ~/ruby-rpm/ruby.spec ./SPECS/
+          command: cp ~/ruby-rpm/ruby.spec /home/builder/rpmbuild/SPECS/
       - run:
           name: Build Ruby RPM
           command: |
