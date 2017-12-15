@@ -2,7 +2,7 @@ version: 2
 jobs:
   centos7: &centos
     docker:
-      - image: centos7
+      - image: centos
         user: builder
     working_directory: /home/builder/rpmbuild
     steps:
